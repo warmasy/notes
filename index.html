@@ -228,28 +228,21 @@
 	</head>
 	<body>
 		<div id="board"></div>
+		<script>
+			const messages = [
+				'身是菩提树，心如明镜台，时时勤拂拭，莫使惹尘埃。',
+				'为少女立心，为少妇立命，为人妻继绝学，为寡妇开太平',
+				'今天吃外卖',
+				'你不学机械，见我如井底蛙观天上月，你若学机械，见我如一粒蚍蜉见青天',
+			]
+
+			messagesNumsM = messages.length + 15
+			messagesNumsP = messagesNumsM + 0
+
+		</script>
 
 		<script>
 			const board = document.getElementById('board')
-			const messages = [
-				'保持好心情',
-				'多喝水哦',
-				'今天辛苦啦',
-				'早点休息',
-				'记得吃水果',
-				'加油，你可以的',
-				'祝你顺利',
-				'保持微笑呀',
-				'愿所有烦恼都消失',
-				'期待下一次见面',
-				'梦想总会实现',
-				'天气冷了，多穿衣服',
-				'记得给自己放松',
-				'每天都要元气满满',
-				'今天也要好好爱自己',
-				'适当休息一下'
-			]
-
 			const colors = [
 				'#ffe0e3',
 				'#c7f0ff',
@@ -268,9 +261,12 @@
 			const pointerMediaQuery = window.matchMedia('(pointer: coarse)')
 			let isMobile =
 				pointerMediaQuery.matches || window.innerWidth <= 768
-			let maxCards = isMobile ? 120 : 180 // 限制 DOM 节点数量，减轻移动端压力
-			const initialCardCount = isMobile ? 18 : 30
-			let spawnInterval = isMobile ? 700 : 400
+			// let maxCards = isMobile ? 120 : 180 // 限制 DOM 节点数量，减轻移动端压力
+			let maxCards = isMobile ? messagesNumsM : messagesNumsP // 限制 DOM 节点数量，减轻移动端压力
+			// const initialCardCount = isMobile ? 18 : 30 //初始卡片数量设置
+			const initialCardCount = isMobile ? 5 : 10
+			// let spawnInterval = isMobile ? 700 : 400
+			let spawnInterval = isMobile ? 800 : 800 // 增加卡片延迟设置
 			let zIndexCursor = 200
 			let spawnTimer = null
 
